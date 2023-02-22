@@ -1,0 +1,31 @@
+const readline = require('readline');
+
+// Define the admission requirements
+const requiredGPA = 3.0;
+const requiredSAT = 1200;
+
+// Create an interface for reading user input
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+// Ask the user for their GPA and SAT score
+rl.question('What is your GPA? ', (gpa) => {
+  rl.question('What is your SAT score? ', (sat) => {
+
+    // Convert the user input to numbers
+    const userGPA = parseFloat(gpa);
+    const userSAT = parseInt(sat);
+
+    // Check if the user meets the admission requirements
+    if (userGPA >= requiredGPA && userSAT >= requiredSAT) {
+      console.log('Congratulations! You have been accepted to the college.');
+    } else {
+      console.log('Sorry, you do not meet the admission requirements.');
+    }
+
+    // Close the interface
+    rl.close();
+  });
+});
